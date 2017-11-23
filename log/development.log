@@ -1,0 +1,473 @@
+
+
+Started GET "/" for ::1 at 2017-11-23 14:02:52 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/admin/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/admin/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/admin/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/admin/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (131.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddImageRefToUsers (20171116032813)
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36m (261.3ms)[0m  [1mALTER TABLE "users" ADD "image_id" integer[0m
+  [1m[35m (347.9ms)[0m  ALTER TABLE "users" ADD CONSTRAINT "fk_rails_47c7c64b36"
+FOREIGN KEY ("image_id")
+  REFERENCES "images" ("id")
+
+  [1m[36mSQL (27.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20171116032813"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (98.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'foos'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'images'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'inquiries'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'roles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'thing_images'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'things'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2017-11-23 14:03:35 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UiController#index as HTML
+  Rendered ui/index.html.erb (5329.6ms)
+Completed 200 OK in 5378ms (Views: 5358.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.self-de360c7d62425cf1c6558ffbe1109183b8b8ac5d22868df4f4db90f6b5ad8b0e.css?body=1" for ::1 at 2017-11-23 14:03:41 +0100
+
+
+Started GET "/assets/ui-cropper.self-a7541c63e55de518b311877126985266079f5ab0062db66c1d9dbe0b91a59717.css?body=1" for ::1 at 2017-11-23 14:03:41 +0100
+
+
+Started GET "/assets/spa-demo/layout/navbar/navbar.component.self-b21b33919a2b009116505a8f11afc9c04aed6afa55c8c3a5c1284c2366a78f40.js?body=1" for ::1 at 2017-11-23 14:03:41 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/spa-demo/config/config.module.self-e81c526f560914e438992cf53c9237e2b982d7ed71dfeeec6986ca39788a99e0.js?body=1" for ::1 at 2017-11-23 14:03:42 +0100
+
+
+Started GET "/assets/spa-demo/authn/signup/signup.component.self-23d84fcc20f8ab8c94e3389fab5d589e874c83c6abb325b3a615920fea4ad387.js?body=1" for ::1 at 2017-11-23 14:03:42 +0100
+
+
+Started GET "/auth/validate_token" for ::1 at 2017-11-23 14:03:42 +0100
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "alice@bbunch.org"]]
+Completed 401 Unauthorized in 963ms (Views: 0.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/assets/spa-demo/layout/navbar/navbar-03599b19277d7f4574e95e442e1133e4a738321967e2fdfc15535125b1a994e9.html" for ::1 at 2017-11-23 14:03:43 +0100
+
+
+Started GET "/assets/spa-demo/authn/authn_session/authn_session-febc3c956a8a908d42a91c083d0e8ce6ca7bf3bbe676f7c288cd2adaabd9e8f4.html" for ::1 at 2017-11-23 14:03:43 +0100
+
+
+Started GET "/authn/whoami" for ::1 at 2017-11-23 14:03:43 +0100
+Processing by AuthnController#whoami as JSON
+  Rendered authn/whoami.json.jbuilder (33.3ms)
+Completed 200 OK in 49ms (Views: 48.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/?width=50" for ::1 at 2017-11-23 14:03:44 +0100
+Processing by UiController#index as HTML
+  Parameters: {"width"=>"50"}
+  Rendered ui/index.html.erb (535.0ms)
+Completed 200 OK in 543ms (Views: 542.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/spa-demo/pages/signup_page-b1638fd4276306af4f690eb811ce17b344dbb7e45fbf040296585dd07072c18e.html" for ::1 at 2017-11-23 14:04:03 +0100
+
+
+Started GET "/assets/spa-demo/authn/signup/signup-9f2b5300206f1b6dd30976ae68088fab0bb54d6deeac3d9952b9e58a7e252438.html" for ::1 at 2017-11-23 14:04:04 +0100
+
+
+Started GET "/assets/spa-demo/layout/image_loader/image_loader-d4ef68e59e9a77fefd10422956ecbac0ec44b9578cf8f43307d8fbdb8d6ba4f0.html" for ::1 at 2017-11-23 14:04:04 +0100
+
+
+Started POST "/auth" for ::1 at 2017-11-23 14:04:28 +0100
+Processing by DeviseTokenAuth::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test1@test.com", "name"=>"Vagos", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "confirm_success_url"=>"http://localhost:3000/#/signup", "config_name"=>"default", "registration"=>{"email"=>"test1@test.com", "name"=>"Vagos", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "confirm_success_url"=>"http://localhost:3000/#/signup", "config_name"=>"default"}}
+Unpermitted parameters: confirm_success_url, config_name, registration
+Unpermitted parameters: confirm_success_url, config_name, registration
+Unpermitted parameters: confirm_success_url, config_name, registration
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."provider" = $1 AND "users"."email" = $2  [["provider", "email"], ["email", "test1@test.com"]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "name", "tokens", "uid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "test1@test.com"], ["encrypted_password", "$2a$10$L85V5sud6f96jQc/U0WTn.xElh3CdoUXRXk/JLX2wWDwlVRyjcQuG"], ["name", "Vagos"], ["tokens", "{}"], ["uid", "test1@test.com"], ["created_at", "2017-11-23 13:04:28.639939"], ["updated_at", "2017-11-23 13:04:28.639939"]]
+  [1m[35m (41.4ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"expiry\":1512651868}}"], ["updated_at", "2017-11-23 13:04:28.785825"], ["id", 11]]
+  [1m[36m (40.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE[0m  [["id", 11]]
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:28.929+01:00\"}}"], ["updated_at", "2017-11-23 13:04:28.931016"], ["id", 11]]
+  [1m[36m (41.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 904ms (Views: 0.4ms | ActiveRecord: 128.7ms)
+
+
+Started POST "/api/images" for ::1 at 2017-11-23 14:04:29 +0100
+
+
+Started GET "/assets/spa-demo/pages/main-0f4fcb5abc8c99d36e9fcda4a61486332e373ba7984a9ebc4f2b088261c65b27.html" for ::1 at 2017-11-23 14:04:29 +0100
+Processing by ImagesController#create as JSON
+  Parameters: {"image_content"=>"[FILTERED]", "user_id"=>11, "caption"=>nil, :image=>{"caption"=>nil}}
+
+
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "test1@test.com"]]
+Started GET "/assets/spa-demo/foos/foos-e5bc979caf44e359fdb78003b0706a65bef17d8a6d2eaabcbb764d40ed2048c0.html" for ::1 at 2017-11-23 14:04:29 +0100
+
+
+Started GET "/api/foos" for ::1 at 2017-11-23 14:04:29 +0100
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "images" ("creator_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["creator_id", 11], ["created_at", "2017-11-23 13:04:29.650612"], ["updated_at", "2017-11-23 13:04:29.650612"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 11]]
+Processing by FoosController#index as JSON
+  [1m[35mSQL (0.9ms)[0m  UPDATE "users" SET "image_id" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["image_id", 32], ["updated_at", "2017-11-23 13:04:29.766409"], ["id", 11]]
+  [1m[35mFoo Load (50.7ms)[0m  SELECT "foos".* FROM "foos"
+  Rendered foos/index.json.jbuilder (305.6ms)
+Completed 200 OK in 372ms (Views: 297.2ms | ActiveRecord: 51.9ms)
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "roles" ("role_name", "mname", "mid", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["role_name", "organizer"], ["mname", "Image"], ["mid", 32], ["user_id", 11], ["created_at", "2017-11-23 13:04:31.516586"], ["updated_at", "2017-11-23 13:04:31.516586"]]
+  Rendered images/_image.json.jbuilder (1.4ms)
+  Rendered images/show.json.jbuilder (67.8ms)
+  [1m[35m (40.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE  [["id", 11]]
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"}}"], ["updated_at", "2017-11-23 13:04:31.661750"], ["id", 11]]
+  [1m[35m (41.0ms)[0m  COMMIT
+Completed 201 Created in 2271ms (Views: 92.1ms | ActiveRecord: 91.2ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2017-11-23 14:04:35 +0100
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test1@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'test1@test.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+Completed 401 Unauthorized in 96ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2017-11-23 14:04:40 +0100
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test1@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'test1@test.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"GApvK4eg_-1aI2OW-5yZSw\":{\"token\":\"$2a$10$5gFm4BlS1DPAdLqveaf.eewaGIDlOCuUOtb5pvJBKQwaDHj/TRoRG\",\"expiry\":1512651881}}"], ["updated_at", "2017-11-23 13:04:41.177804"], ["id", 11]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2017-11-23 13:04:41.183365"], ["current_sign_in_at", "2017-11-23 13:04:41.183365"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2017-11-23 13:04:41.186072"], ["id", 11]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mImage Load (0.4ms)[0m  [1mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE[0m  [["id", 11]]
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"GApvK4eg_-1aI2OW-5yZSw\":{\"token\":\"$2a$10$xIz2SqyAUyPAbU8yRl.H.OrMl6.dNMprOJoLEcZ01HqS6cJc7InHW\",\"expiry\":1512651881,\"last_token\":\"$2a$10$5gFm4BlS1DPAdLqveaf.eewaGIDlOCuUOtb5pvJBKQwaDHj/TRoRG\",\"updated_at\":\"2017-11-23T14:04:41.292+01:00\"}}"], ["updated_at", "2017-11-23 13:04:41.295034"], ["id", 11]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 319ms (Views: 1.7ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/authn/whoami" for ::1 at 2017-11-23 14:04:41 +0100
+Processing by AuthnController#whoami as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "test1@test.com"]]
+  [1m[36m (0.6ms)[0m  [1mSELECT "roles"."role_name", "roles"."mname" FROM "roles" WHERE "roles"."user_id" = $1 AND (mid is null)[0m  [["user_id", 11]]
+  [1m[35mImage Load (0.5ms)[0m  SELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT 1  [["id", 32]]
+  Rendered authn/whoami.json.jbuilder (2.6ms)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE  [["id", 11]]
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"GApvK4eg_-1aI2OW-5yZSw\":{\"token\":\"$2a$10$xIz2SqyAUyPAbU8yRl.H.OrMl6.dNMprOJoLEcZ01HqS6cJc7InHW\",\"expiry\":1512651881,\"last_token\":\"$2a$10$5gFm4BlS1DPAdLqveaf.eewaGIDlOCuUOtb5pvJBKQwaDHj/TRoRG\",\"updated_at\":\"2017-11-23T14:04:41.529+01:00\"}}"], ["updated_at", "2017-11-23 13:04:41.532208"], ["id", 11]]
+  [1m[35m (40.9ms)[0m  COMMIT
+Completed 200 OK in 186ms (Views: 34.0ms | ActiveRecord: 44.0ms)
+
+
+Started GET "/api/images/32/content.json?width=50" for ::1 at 2017-11-23 14:04:41 +0100
+Processing by ImagesController#content as JSON
+  Parameters: {"width"=>"50", "id"=>"32"}
+  [1m[36mImage Load (0.4ms)[0m  [1mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  Rendered text template (0.0ms)
+Sent data image-32.jpg (30.3ms)
+Completed 200 OK in 1191ms (Views: 30.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2017-11-23 14:04:48 +0100
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "test1@test.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"}}"], ["updated_at", "2017-11-23 13:04:48.755302"], ["id", 11]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 49ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/authn/whoami" for ::1 at 2017-11-23 14:04:48 +0100
+Processing by AuthnController#whoami as JSON
+  Rendered authn/whoami.json.jbuilder (0.1ms)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/?width=50" for ::1 at 2017-11-23 14:04:48 +0100
+Processing by UiController#index as HTML
+  Parameters: {"width"=>"50"}
+  Rendered ui/index.html.erb (219.1ms)
+Completed 200 OK in 223ms (Views: 222.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2017-11-23 14:04:50 +0100
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test1@test.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'test1@test.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"K9GJ8lQJN6_qvh6WaDO4MQ\":{\"token\":\"$2a$10$Z7hCE25nxFg6R/OiLTsVFONPaihb3rAp9o0CrFWzi/uLWDZzkSoau\",\"expiry\":1512651890}}"], ["updated_at", "2017-11-23 13:04:50.850687"], ["id", 11]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2017-11-23 13:04:50.858123"], ["sign_in_count", 2], ["updated_at", "2017-11-23 13:04:50.862155"], ["id", 11]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE[0m  [["id", 11]]
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"K9GJ8lQJN6_qvh6WaDO4MQ\":{\"token\":\"$2a$10$rdpMjXS5youW5udGqZdx9.8kvJsNHQ6RKTiB74MlAeQ2rr7TbnW8K\",\"expiry\":1512651890,\"last_token\":\"$2a$10$Z7hCE25nxFg6R/OiLTsVFONPaihb3rAp9o0CrFWzi/uLWDZzkSoau\",\"updated_at\":\"2017-11-23T14:04:50.964+01:00\"}}"], ["updated_at", "2017-11-23 13:04:50.967040"], ["id", 11]]
+  [1m[36m (120.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 436ms (Views: 2.0ms | ActiveRecord: 125.0ms)
+
+
+Started GET "/authn/whoami" for ::1 at 2017-11-23 14:04:51 +0100
+Processing by AuthnController#whoami as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "test1@test.com"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT "roles"."role_name", "roles"."mname" FROM "roles" WHERE "roles"."user_id" = $1 AND (mid is null)[0m  [["user_id", 11]]
+  [1m[35mImage Load (0.5ms)[0m  SELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT 1  [["id", 32]]
+  Rendered authn/whoami.json.jbuilder (1.8ms)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE  [["id", 11]]
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"K9GJ8lQJN6_qvh6WaDO4MQ\":{\"token\":\"$2a$10$rdpMjXS5youW5udGqZdx9.8kvJsNHQ6RKTiB74MlAeQ2rr7TbnW8K\",\"expiry\":1512651890,\"last_token\":\"$2a$10$Z7hCE25nxFg6R/OiLTsVFONPaihb3rAp9o0CrFWzi/uLWDZzkSoau\",\"updated_at\":\"2017-11-23T14:04:51.291+01:00\"}}"], ["updated_at", "2017-11-23 13:04:51.293729"], ["id", 11]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 116ms (Views: 4.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/spa-demo/pages/images_page-c4165c503ad0da133576deeab857e21d45419e57c1a32903cde6f5444a44f1af.html" for ::1 at 2017-11-23 14:04:54 +0100
+
+
+
+
+Started GET "/assets/spa-demo/subjects/images/image_selector-55a921ea53ce3098c413eca2980a38f72483d054842d70b1f17fa5e4934bc3f2.html" for ::1 at 2017-11-23 14:04:54 +0100
+Started GET "/assets/spa-demo/subjects/images/image_editor-a0fd976124d7665750bf237f18ef3bfc0f7b8e0a464c3741a156cc3056008fa6.html" for ::1 at 2017-11-23 14:04:54 +0100
+
+
+Started GET "/authn/whoami" for ::1 at 2017-11-23 14:04:54 +0100
+Processing by AuthnController#whoami as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1[0m  [["uid", "test1@test.com"]]
+  [1m[35m (0.4ms)[0m  SELECT "roles"."role_name", "roles"."mname" FROM "roles" WHERE "roles"."user_id" = $1 AND (mid is null)  [["user_id", 11]]
+  [1m[36mImage Load (0.4ms)[0m  [1mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  Rendered authn/whoami.json.jbuilder (1.9ms)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE[0m  [["id", 11]]
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"K9GJ8lQJN6_qvh6WaDO4MQ\":{\"token\":\"$2a$10$rdpMjXS5youW5udGqZdx9.8kvJsNHQ6RKTiB74MlAeQ2rr7TbnW8K\",\"expiry\":1512651890,\"last_token\":\"$2a$10$Z7hCE25nxFg6R/OiLTsVFONPaihb3rAp9o0CrFWzi/uLWDZzkSoau\",\"updated_at\":\"2017-11-23T14:04:54.934+01:00\"}}"], ["updated_at", "2017-11-23 13:04:54.937227"], ["id", 11]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 25ms (Views: 4.7ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/images" for ::1 at 2017-11-23 14:04:54 +0100
+Processing by ImagesController#index as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "test1@test.com"]]
+  [1m[36mImage Load (1.1ms)[0m  [1mSELECT Images.*, r.role_name FROM "images" left join Users on Users.image_id = Images.id left join Roles r on r.mname='Image' and r.mid=Images.id and r.user_id =11 WHERE (Users.id is null)[0m
+  Rendered images/_image.json.jbuilder (2.4ms)
+  Rendered images/_image.json.jbuilder (1.4ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.5ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (2.0ms)
+  Rendered images/_image.json.jbuilder (1.9ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.4ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (2.2ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.4ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (2.0ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (2.5ms)
+  Rendered images/_image.json.jbuilder (1.9ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (1.5ms)
+  Rendered images/_image.json.jbuilder (1.5ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (1.9ms)
+  Rendered images/_image.json.jbuilder (1.9ms)
+  Rendered images/_image.json.jbuilder (1.4ms)
+  Rendered images/_image.json.jbuilder (1.5ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/index.json.jbuilder (152.4ms)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE[0m  [["id", 11]]
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"K9GJ8lQJN6_qvh6WaDO4MQ\":{\"token\":\"$2a$10$rdpMjXS5youW5udGqZdx9.8kvJsNHQ6RKTiB74MlAeQ2rr7TbnW8K\",\"expiry\":1512651890,\"last_token\":\"$2a$10$Z7hCE25nxFg6R/OiLTsVFONPaihb3rAp9o0CrFWzi/uLWDZzkSoau\",\"updated_at\":\"2017-11-23T14:04:55.534+01:00\"}}"], ["updated_at", "2017-11-23 13:04:55.537757"], ["id", 11]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 518ms (Views: 214.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/images" for ::1 at 2017-11-23 14:04:55 +0100
+Processing by ImagesController#index as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT 1  [["uid", "test1@test.com"]]
+  [1m[36mImage Load (0.9ms)[0m  [1mSELECT Images.*, r.role_name FROM "images" left join Users on Users.image_id = Images.id left join Roles r on r.mname='Image' and r.mid=Images.id and r.user_id =11 WHERE (Users.id is null)[0m
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (2.3ms)
+  Rendered images/_image.json.jbuilder (2.1ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.4ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.5ms)
+  Rendered images/_image.json.jbuilder (1.3ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (2.0ms)
+  Rendered images/_image.json.jbuilder (2.0ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.3ms)
+  Rendered images/_image.json.jbuilder (2.0ms)
+  Rendered images/_image.json.jbuilder (1.7ms)
+  Rendered images/_image.json.jbuilder (2.0ms)
+  Rendered images/_image.json.jbuilder (1.9ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.5ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.6ms)
+  Rendered images/_image.json.jbuilder (1.8ms)
+  Rendered images/index.json.jbuilder (108.3ms)
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1 FOR UPDATE[0m  [["id", 11]]
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["tokens", "{\"VPixOQt5jXtw5OSnLCPZ2w\":{\"token\":\"$2a$10$iCJEegfo.11X5t1iyloByu2AQYWArwZh6UtP65aMRDGcMFMO/pBhe\",\"expiry\":1512651868,\"last_token\":\"$2a$10$OfTfUX6ZTmM3knAkunkMWeYCo58zRaN3S4v6jeEhe0TnkC7Lja5Ei\",\"updated_at\":\"2017-11-23T14:04:31.659+01:00\"},\"K9GJ8lQJN6_qvh6WaDO4MQ\":{\"token\":\"$2a$10$rdpMjXS5youW5udGqZdx9.8kvJsNHQ6RKTiB74MlAeQ2rr7TbnW8K\",\"expiry\":1512651890,\"last_token\":\"$2a$10$Z7hCE25nxFg6R/OiLTsVFONPaihb3rAp9o0CrFWzi/uLWDZzkSoau\",\"updated_at\":\"2017-11-23T14:04:55.744+01:00\"}}"], ["updated_at", "2017-11-23 13:04:55.747181"], ["id", 11]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 132ms (Views: 111.6ms | ActiveRecord: 3.3ms)

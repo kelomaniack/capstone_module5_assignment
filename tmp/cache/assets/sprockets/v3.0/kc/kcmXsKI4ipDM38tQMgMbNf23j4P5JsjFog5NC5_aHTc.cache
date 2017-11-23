@@ -1,0 +1,35 @@
+{:uriI"
+file:///Users/admin/Documents/Documents2/coursera/Capstone%20Photo%20Tourist%20Web%20Application/Assignments/capstone_module5_assignment/app/assets/javascripts/spa-demo/foos/foos.html?type=text/html&id=877a3a6a4ced90f33a4382b3ce1e33d1a177c7009381c92c776d4533300c5652:ET:load_pathI"app/assets/javascripts;T:filenameI"3app/assets/javascripts/spa-demo/foos/foos.html;T:	nameI"spa-demo/foos/foos;T:logical_pathI"spa-demo/foos/foos.html;T:content_typeI"text/html;T:sourceI"ê<div>
+  <h3>Foos</h3>
+  <span>(from spa-demo/foos/foos.html)</span>
+
+  <form>
+    <div>
+      <label>Name:</label>
+      <input name="name"
+              ng-model="foosVM.foo.name"
+              required="required"/>
+    </div>
+
+    <button ng-if="!foosVM.foo.id" 
+             type="submit"
+             ng-click="foosVM.create()">Create Foo</button>  
+    <div ng-if="foosVM.foo.id">
+      <button type="submit"
+              ng-click="foosVM.update()">Update Foo</button>
+      <button type="submit"
+              ng-click="foosVM.remove()">Delete Foo</button>
+    </div>               
+    </form>
+
+  <ul>
+    <li ng-repeat="foo in foosVM.foos | orderBy:'name'">
+      <a ng-click="foosVM.edit(foo)">{{foo.name}}</a>
+    </li>
+  </ul>
+
+</div>;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"¾file-digest:///Users/admin/Documents/Documents2/coursera/Capstone%20Photo%20Tourist%20Web%20Application/Assignments/capstone_module5_assignment/app/assets/javascripts/spa-demo/foos/foos.html;TTF:charsetI"
+utf-8;F:digest"%å¼—œ¯DãYý·€°pje¾ñ}Šm.ª¼»vM@í HÀ:lengthiê:dependencies_digest"%éf =÷\Šò°¾ÀÀ‘[Ï¾`‚A3½Î:ƒcv:idI"E877a3a6a4ced90f33a4382b3ce1e33d1a177c7009381c92c776d4533300c5652;F:
+mtimel+×¼Z
